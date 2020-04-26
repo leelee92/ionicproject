@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/recettes"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">{{ recette.title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="warning" (click)="removeRecette()"
+        ><ion-icon name="trash"></ion-icon
+      ></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="recette.imageUrl"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h1 class="ion-text-center">{{ recette.title }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card
+          *ngFor="let i of recette.produits.ingredients ; let j = index"
+        >
+          <ion-item style="color: gray;">
+            <span slot="start"> {{ i }} </span>
+
+            <span slot="end"
+              >{{ recette.produits.quantite[j] }}
+            </span></ion-item
+          >
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
